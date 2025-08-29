@@ -6,7 +6,17 @@ import { Outlet, Link as RouterLink } from 'react-router-dom';
 export const AppLayout: React.FC = () => {
 	return (
 		<Box display="flex" flexDirection="column" minHeight="100vh">
-			<AppBar position="static" elevation={0} color="transparent">
+			<AppBar
+				position="sticky"
+				elevation={0}
+				color="transparent"
+				sx={{
+					backgroundColor: 'rgba(255,255,255,0.7)',
+					backdropFilter: 'saturate(180%) blur(10px)',
+					borderBottom: '1px solid',
+					borderColor: 'divider',
+				}}
+			>
 				<Toolbar>
 					<IconButton edge="start" aria-label="menu" sx={{ mr: 2 }}>
 						<MenuIcon />

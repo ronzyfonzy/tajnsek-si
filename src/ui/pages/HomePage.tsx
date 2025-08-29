@@ -1,51 +1,78 @@
 import React from 'react';
-import { Box, Button, Stack, Typography } from '@mui/material';
-import Grid from '@mui/material/Grid';
+import { Grid, Box, Button, Stack, Typography, Card, CardContent } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import BoltIcon from '@mui/icons-material/Bolt';
+import BuildCircleIcon from '@mui/icons-material/BuildCircle';
+import SecurityIcon from '@mui/icons-material/Security';
 import { Link as RouterLink } from 'react-router-dom';
 
 export const HomePage: React.FC = () => {
 	return (
-		<Stack spacing={8}>
-			<Box textAlign="center" sx={{ py: 6 }}>
-				<Typography variant="h2" fontWeight={700} gutterBottom>
-					Custom software that fits your business
+		<Stack spacing={10}>
+			<Box
+				textAlign="center"
+				sx={{
+					py: { xs: 8, md: 12 },
+					px: 2,
+					borderRadius: 3,
+					background: 'linear-gradient(135deg, rgba(11,95,255,0.08) 0%, rgba(0,199,183,0.08) 100%)',
+				}}
+			>
+				<Typography variant="overline" color="primary" sx={{ letterSpacing: 1, fontWeight: 700 }}>
+					CUSTOM SOFTWARE, ZERO BLOAT
 				</Typography>
-				<Typography variant="h6" color="text.secondary" maxWidth={800} mx="auto">
-					Skip the complexity of monolithic suites like SAP. Get a focused application built for your exact workflows, so your team adopts
-					it faster and delivers results sooner.
+				<Typography variant="h2" fontWeight={800} gutterBottom>
+					Software that adapts to your business — not the other way around
+				</Typography>
+				<Typography variant="h6" color="text.secondary" maxWidth={900} mx="auto">
+					I design and ship focused applications that match your exact workflows. Faster onboarding, clean integrations, and deployments you
+					can own — cloud or on‑prem.
 				</Typography>
 				<Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" sx={{ mt: 4 }}>
 					<Button component={RouterLink} to="/services" variant="contained" size="large">
-						What I build
+						See what I build
 					</Button>
 					<Button component={RouterLink} to="/case-studies" variant="outlined" size="large">
-						See results
+						See real results
 					</Button>
 				</Stack>
 			</Box>
 
-			<Grid container spacing={4} columns={12}>
+			<Grid container spacing={4}>
 				{[
 					{
-						title: 'Purpose-built, no bloat',
-						desc: 'Only the features you need. Faster onboarding. Less change management.',
+						icon: <CheckCircleIcon color="primary" />,
+						title: 'Purpose‑built, no bloat',
+						desc: 'Only the features you need. Less training, higher adoption, faster ROI.',
 					},
 					{
-						title: 'Adapts to your process',
-						desc: 'Your system follows how you already work — not the other way around.',
+						icon: <BuildCircleIcon color="primary" />,
+						title: 'Fits your process',
+						desc: 'Your system mirrors how your team already works. No forced change management.',
 					},
 					{
-						title: 'Own your infrastructure',
-						desc: 'From cloud to on-prem NAS with secure VPN. Portable, containerized deployments.',
+						icon: <BoltIcon color="primary" />,
+						title: 'Integrates cleanly',
+						desc: 'Email, internal tools, and data flows — connected without the complexity.',
+					},
+					{
+						icon: <SecurityIcon color="primary" />,
+						title: 'Own your infra',
+						desc: 'Containerized, portable deployments. Cloud or on‑prem NAS with secure VPN.',
 					},
 				].map((item) => (
-					<Grid key={item.title} size={{ xs: 12, md: 4 }}>
-						<Stack spacing={1}>
-							<Typography variant="h5" fontWeight={700}>
-								{item.title}
-							</Typography>
-							<Typography color="text.secondary">{item.desc}</Typography>
-						</Stack>
+					<Grid key={item.title} size={{ xs: 12, md: 6, lg: 3 }}>
+						<Card variant="outlined" sx={{ height: '100%', borderRadius: 3 }}>
+							<CardContent>
+								<Stack spacing={1.5}>
+									<Box>{item.icon}</Box>
+									<Typography variant="h6" fontWeight={700}>
+										{item.title}
+									</Typography>
+									<Typography color="text.secondary">{item.desc}</Typography>
+								</Stack>
+							</CardContent>
+						</Card>
 					</Grid>
 				))}
 			</Grid>
