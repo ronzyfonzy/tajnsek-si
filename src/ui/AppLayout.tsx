@@ -15,26 +15,26 @@ export const AppLayout: React.FC = () => {
 				elevation={0}
 				color="transparent"
 				sx={{
-					backgroundColor: 'rgba(255,255,255,0.7)',
+					backgroundColor: theme.palette.mode === 'dark' ? 'rgba(17,17,20,0.7)' : 'rgba(255,255,255,0.7)',
 					backdropFilter: 'saturate(180%) blur(10px)',
 					borderBottom: '1px solid',
-					borderColor: 'divider',
+					borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'divider',
 				}}
 			>
-				<Toolbar>	
+				<Toolbar>
 					<Typography variant="h6" component={RouterLink} to="/" sx={{ flexGrow: 1, textDecoration: 'none', color: 'inherit' }}>
 						TAJNSEK
 					</Typography>
 					<Button component={RouterLink} to="/services" color="inherit">
 						Services
 					</Button>
-					<Button component={RouterLink} to="/case-studies" color="inherit">
+					{/* <Button component={RouterLink} to="/case-studies" color="inherit">
 						Case Studies
-					</Button>
+					</Button> */}
 					<Button component={RouterLink} to="/about" color="inherit">
 						About
 					</Button>
-					<Button component={RouterLink} to="/contact" variant="contained" sx={{ mr: 1 }}>
+					<Button component={RouterLink} to="/contact" variant="contained" sx={{ mx: 1 }}>
 						Contact
 					</Button>
 					<IconButton aria-label="toggle color mode" onClick={toggle} color="inherit">

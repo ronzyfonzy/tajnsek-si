@@ -27,8 +27,12 @@ export const HomePage: React.FC = () => {
 					position: 'relative',
 					overflow: 'hidden',
 					background: isDark
-						? 'linear-gradient(135deg, rgba(11,95,255,0.12) 0%, rgba(0,199,183,0.10) 100%)'
-						: 'linear-gradient(135deg, rgba(11,95,255,0.08) 0%, rgba(0,199,183,0.08) 100%)',
+					? 'linear-gradient(135deg, rgba(11,95,255,0.12) 0%, rgba(0,199,183,0.10) 100%)'
+					: 'linear-gradient(135deg, rgba(11,95,255,0.08) 0%, rgba(0,199,183,0.08) 100%)'
+					// red
+						// ? 'linear-gradient(135deg, rgba(229,57,53,0.12) 0%, rgba(255,23,68,0.10) 100%)'
+						// : 'linear-gradient(135deg, rgba(229,57,53,0.08) 0%, rgba(255,23,68,0.08) 100%)'
+						,
 					'&::before': {
 						content: '""',
 						position: 'absolute',
@@ -36,6 +40,7 @@ export const HomePage: React.FC = () => {
 						height: 520,
 						borderRadius: '50%',
 						background: 'radial-gradient(circle at 30% 30%, #0b5fff, transparent 60%)',
+						// background: 'radial-gradient(circle at 30% 30%, #e53935, transparent 60%)',
 						filter: 'blur(80px)',
 						opacity: isDark ? 0.18 : 0.28,
 						top: -120,
@@ -49,6 +54,7 @@ export const HomePage: React.FC = () => {
 						height: 520,
 						borderRadius: '50%',
 						background: 'radial-gradient(circle at 70% 70%, #00c7b7, transparent 60%)',
+						// background: 'radial-gradient(circle at 70% 70%, #ff1744, transparent 60%)',
 						filter: 'blur(90px)',
 						opacity: isDark ? 0.16 : 0.24,
 						bottom: -140,
