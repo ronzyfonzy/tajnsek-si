@@ -10,9 +10,10 @@
 	"compatibility_flags": [
 		"global_fetch_strictly_public"
 	],
+	// During dev we use Vite. For deploy we'll point assets to dist and bind ASSETS.
 	"assets": {
-		// The path to the directory containing the `index.html` file to be served at `/`
-		"directory": "./public"
+		"directory": "./dist",
+		"binding": "ASSETS"
 	},
 	"observability": {
 		"enabled": true

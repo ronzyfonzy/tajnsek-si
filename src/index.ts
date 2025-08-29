@@ -12,15 +12,16 @@
  */
 
 export default {
-	async fetch(request, env, ctx): Promise<Response> {
+	async fetch(request, env): Promise<Response> {
 		const url = new URL(request.url);
-		switch (url.pathname) {
-			case '/message':
-				return new Response('Hello, World!');
-			case '/random':
-				return new Response(crypto.randomUUID());
-			default:
-				return new Response('Not Found', { status: 404 });
+		// Try to serve static asset first
+		const assetResponse = await env.ASSETS.fetch(request);
+		if (assetResponse.status < 400) return assetResponse;
+		// SPA fallback to index.html
+		if (request.method === 'GET' && !url.pathname.includes('.')) {
+			const indexReq = new Request(new URL('/', url.origin), request);
+			return env.ASSETS.fetch(indexReq);
 		}
+		return new Response('Not Found', { status: 404 });
 	},
 } satisfies ExportedHandler<Env>;
