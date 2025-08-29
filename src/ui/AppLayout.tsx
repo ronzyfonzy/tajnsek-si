@@ -1,9 +1,13 @@
 import React from 'react';
-import { AppBar, Box, Container, IconButton, Toolbar, Typography, Button } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Box, Container, IconButton, Toolbar, Typography, Button, useTheme } from '@mui/material';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import { Outlet, Link as RouterLink } from 'react-router-dom';
+import { useColorMode } from './AppThemeProvider';
 
 export const AppLayout: React.FC = () => {
+	const theme = useTheme();
+	const { mode, toggle } = useColorMode();
 	return (
 		<Box display="flex" flexDirection="column" minHeight="100vh">
 			<AppBar
@@ -17,10 +21,7 @@ export const AppLayout: React.FC = () => {
 					borderColor: 'divider',
 				}}
 			>
-				<Toolbar>
-					<IconButton edge="start" aria-label="menu" sx={{ mr: 2 }}>
-						<MenuIcon />
-					</IconButton>
+				<Toolbar>	
 					<Typography variant="h6" component={RouterLink} to="/" sx={{ flexGrow: 1, textDecoration: 'none', color: 'inherit' }}>
 						TAJNSEK
 					</Typography>
@@ -33,9 +34,12 @@ export const AppLayout: React.FC = () => {
 					<Button component={RouterLink} to="/about" color="inherit">
 						About
 					</Button>
-					<Button component={RouterLink} to="/contact" variant="contained">
+					<Button component={RouterLink} to="/contact" variant="contained" sx={{ mr: 1 }}>
 						Contact
 					</Button>
+					<IconButton aria-label="toggle color mode" onClick={toggle} color="inherit">
+						{theme.palette.mode === 'light' ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
+					</IconButton>
 				</Toolbar>
 			</AppBar>
 			<Container sx={{ flex: 1, py: 6 }}>
