@@ -47,6 +47,15 @@ export const AppThemeProvider: React.FC<React.PropsWithChildren> = ({ children }
 				typography: {
 					fontFamily: 'Instrument Sans, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif',
 				},
+				components: {
+					MuiTypography: {
+						styleOverrides: {
+							gutterBottom: {
+								marginBottom: 30,
+							},
+						},
+					},
+				},
 			}),
 		[mode]
 	);

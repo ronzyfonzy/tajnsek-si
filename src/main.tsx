@@ -9,9 +9,9 @@ import { AppLayout } from './ui/AppLayout';
 import { AppThemeProvider } from './ui/AppThemeProvider';
 import { HomePage } from './ui/pages/HomePage';
 import { ServicesPage } from './ui/pages/ServicesPage';
-import { CaseStudiesPage } from './ui/pages/CaseStudiesPage';
 import { AboutPage } from './ui/pages/AboutPage';
 import { ContactPage } from './ui/pages/ContactPage';
+import { NotFoundPage } from './ui/pages/NotFoundPage';
 
 const router = createBrowserRouter([
 	{
@@ -20,9 +20,9 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomePage /> },
 			{ path: 'services', element: <ServicesPage /> },
-			{ path: 'case-studies', element: <CaseStudiesPage /> },
 			{ path: 'about', element: <AboutPage /> },
 			{ path: 'contact', element: <ContactPage /> },
+			{ path: '*', element: <NotFoundPage /> },
 		],
 	},
 ]);

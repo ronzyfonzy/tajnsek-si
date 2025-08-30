@@ -5,6 +5,10 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import BoltIcon from '@mui/icons-material/Bolt';
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 import SecurityIcon from '@mui/icons-material/Security';
+import WebAssetIcon from '@mui/icons-material/WebAsset';
+import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
+import DnsIcon from '@mui/icons-material/Dns';
+import TerminalIcon from '@mui/icons-material/Terminal';
 import { Link as RouterLink } from 'react-router-dom';
 
 const float = keyframes`
@@ -27,12 +31,11 @@ export const HomePage: React.FC = () => {
 					position: 'relative',
 					overflow: 'hidden',
 					background: isDark
-					? 'linear-gradient(135deg, rgba(11,95,255,0.12) 0%, rgba(0,199,183,0.10) 100%)'
-					: 'linear-gradient(135deg, rgba(11,95,255,0.08) 0%, rgba(0,199,183,0.08) 100%)'
+						? 'linear-gradient(135deg, rgba(11,95,255,0.12) 0%, rgba(0,199,183,0.10) 100%)'
+						: 'linear-gradient(135deg, rgba(11,95,255,0.08) 0%, rgba(0,199,183,0.08) 100%)',
 					// red
-						// ? 'linear-gradient(135deg, rgba(229,57,53,0.12) 0%, rgba(255,23,68,0.10) 100%)'
-						// : 'linear-gradient(135deg, rgba(229,57,53,0.08) 0%, rgba(255,23,68,0.08) 100%)'
-						,
+					// ? 'linear-gradient(135deg, rgba(229,57,53,0.12) 0%, rgba(255,23,68,0.10) 100%)'
+					// : 'linear-gradient(135deg, rgba(229,57,53,0.08) 0%, rgba(255,23,68,0.08) 100%)'
 					'&::before': {
 						content: '""',
 						position: 'absolute',
@@ -77,9 +80,6 @@ export const HomePage: React.FC = () => {
 					<Button component={RouterLink} to="/services" variant="contained" size="large">
 						See what I build
 					</Button>
-					<Button component={RouterLink} to="/case-studies" variant="outlined" size="large">
-						See real results
-					</Button>
 				</Stack>
 			</Box>
 
@@ -103,7 +103,7 @@ export const HomePage: React.FC = () => {
 					{
 						icon: <SecurityIcon color="primary" />,
 						title: 'Own your infra',
-						desc: 'Containerized, portable deployments. Cloud or on‑prem NAS with secure VPN.',
+						desc: 'Containerized, portable deployments. Cloud or on‑prem with secure VPN.',
 					},
 				].map((item) => (
 					<Grid key={item.title} size={{ xs: 12, md: 6, lg: 3 }}>
@@ -133,24 +133,53 @@ export const HomePage: React.FC = () => {
 				))}
 			</Grid>
 
+			<Divider sx={{ my: 6 }} />
+
 			<Box>
 				<Typography variant="h4" fontWeight={800} gutterBottom>
 					Services
 				</Typography>
 				<Grid container spacing={3}>
 					{[
-						{ title: 'Custom Applications', desc: 'React frontends, .NET/PHP backends, tailored to your workflows.' },
-						{ title: 'Integrations & Automation', desc: 'Email capture, internal systems, workflow automation that reduces manual work.' },
-						{ title: 'Deployments You Own', desc: 'Docker-based, portable, cloud or on‑prem NAS with secure VPN access.' },
-						{ title: 'Operations & Coaching', desc: 'Monitoring, backup strategies, project management and delivery mentoring.' },
+						{
+							icon: <WebAssetIcon color="primary" />,
+							title: 'Custom applications',
+							desc: 'React/Blazor frontends and .NET/PHP backends, modeled to your workflows with clear UX and data flows.',
+						},
+						{
+							icon: <IntegrationInstructionsIcon color="primary" />,
+							title: 'Integrations & automation',
+							desc: 'Connect disconnected systems and eliminate repetitive tasks. Transform manual processes into seamless workflows.',
+						},
+						{
+							icon: <DnsIcon color="primary" />,
+							title: 'Deployments you own',
+							desc: 'Dockerized services on cloud or on‑prem, with secure VPN access and backups.',
+						},
+						{
+							icon: <TerminalIcon color="primary" />,
+							title: 'Operations & coaching',
+							desc: 'Monitoring, CI/CD, release discipline, and project delivery coaching that sticks.',
+						},
 					].map((s) => (
 						<Grid key={s.title} size={{ xs: 12, md: 6 }}>
-							<Card variant="outlined" sx={{ borderRadius: 3 }}>
+							<Card
+								variant="outlined"
+								sx={{
+									borderRadius: 3,
+									height: '100%',
+									transition: 'transform .2s ease, box-shadow .2s ease',
+									'&:hover': { transform: 'translateY(-2px)', boxShadow: 4 },
+								}}
+							>
 								<CardContent>
-									<Typography variant="h6" fontWeight={700}>
-										{s.title}
-									</Typography>
-									<Typography color="text.secondary">{s.desc}</Typography>
+									<Stack spacing={1.5}>
+										<Box>{s.icon}</Box>
+										<Typography variant="h6" fontWeight={700}>
+											{s.title}
+										</Typography>
+										<Typography color="text.secondary">{s.desc}</Typography>
+									</Stack>
 								</CardContent>
 							</Card>
 						</Grid>
@@ -159,7 +188,6 @@ export const HomePage: React.FC = () => {
 			</Box>
 
 			<Divider sx={{ my: 6 }} />
-
 			<Box>
 				<Typography variant="h4" fontWeight={800} gutterBottom>
 					How I work
@@ -174,13 +202,24 @@ export const HomePage: React.FC = () => {
 						{ step: '6', title: 'Continuous delivery', desc: 'Ongoing improvements, monitoring, and support.' },
 					].map((p) => (
 						<Grid key={p.step} size={{ xs: 12, md: 6, lg: 4 }}>
-							<Card variant="outlined" sx={{ borderRadius: 3, height: '100%' }}>
+							<Card
+								variant="outlined"
+								sx={{
+									borderRadius: 3,
+									height: '100%',
+									transition: 'transform .2s ease, box-shadow .2s ease',
+									'&:hover': {
+										transform: 'translateY(-2px)',
+										boxShadow: 4,
+									},
+								}}
+							>
 								<CardContent>
 									<Stack direction="row" spacing={2} alignItems="flex-start">
 										<Box
 											sx={{
-												width: 36,
-												height: 36,
+												width: 38,
+												height: 30,
 												borderRadius: '50%',
 												backgroundColor: 'primary.main',
 												color: 'primary.contrastText',
