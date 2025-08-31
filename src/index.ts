@@ -87,7 +87,26 @@ export default {
 
 		// Try to serve static asset first
 		const assetResponse = await env.ASSETS.fetch(request);
-		if (assetResponse.status < 400) return assetResponse;
+		if (assetResponse.status < 400) {
+			// Add optimized caching headers based on file type
+			const response = new Response(assetResponse.body, assetResponse);
+
+			if (url.pathname.match(/vendor-[a-z]+-[A-Za-z0-9_-]+\.(js|css)$/)) {
+				// Vendor chunks - cache for 1 year (they have content hashes)
+				response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+			} else if (url.pathname.match(/\.(js|css)$/)) {
+				// App chunks - cache for 1 day with revalidation
+				response.headers.set('Cache-Control', 'public, max-age=86400, must-revalidate');
+			} else if (url.pathname.match(/\.(woff2?|png|jpg|jpeg|gif|svg|ico)$/)) {
+				// Static assets - cache for 1 week
+				response.headers.set('Cache-Control', 'public, max-age=604800');
+			} else if (url.pathname.endsWith('.html') || url.pathname === '/') {
+				// HTML - cache for 1 hour with revalidation
+				response.headers.set('Cache-Control', 'public, max-age=3600, must-revalidate');
+			}
+
+			return response;
+		}
 
 		// SPA fallback to index.html
 		if (request.method === 'GET' && !url.pathname.includes('.')) {

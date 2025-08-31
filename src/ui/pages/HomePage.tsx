@@ -196,7 +196,8 @@ export const HomePage: React.FC = () => {
 					Off-the-Shelf vs. Custom-Built
 				</Typography>
 				<Typography variant="h6" color="text.secondary" maxWidth={800} mx="auto" textAlign="center" sx={{ mb: 6 }}>
-					Large, one-size-fits-all systems can seem like a safe bet, but they often force you to change how you work. A custom solution is built around your existing processes.
+					Large, one-size-fits-all systems can seem like a safe bet, but they often force you to change how you work. A custom solution is
+					built around your existing processes.
 				</Typography>
 				<Grid container spacing={4}>
 					<Grid size={{ xs: 12, md: 6 }}>

@@ -10,6 +10,9 @@ interface FastMailConfig {
 	accountId?: string;
 }
 
+const FROM_EMAIL = 'hello@robert.tajnsek.si';
+const TO_EMAIL = 'robert@tajnsek.si';
+
 export class FastMailService {
 	private config: FastMailConfig;
 
@@ -20,8 +23,8 @@ export class FastMailService {
 	async sendContactEmail(data: ContactFormData): Promise<void> {
 		console.log('🔐 FastMail API Token found, attempting to send email');
 		console.log('📧 Email details:', {
-			from: 'robert+website@tajnsek.si',
-			to: 'robert@tajnsek.si',
+			from: FROM_EMAIL,
+			to: TO_EMAIL,
 			replyTo: data.email,
 			subject: `New contact form: ${data.name} - ${data.company || 'No company'}`,
 		});
@@ -166,7 +169,7 @@ Sent from tajnsek.si contact form
 			console.log('🆔 Available identities:', JSON.stringify(identities, null, 2));
 
 			// Find an identity that matches our from address or use the first one
-			const matchingIdentity = identities.find((id: any) => id.email === 'robert+website@tajnsek.si' || id.email === 'robert@tajnsek.si');
+			const matchingIdentity = identities.find((id: any) => id.email === FROM_EMAIL || id.email === TO_EMAIL);
 
 			if (matchingIdentity) {
 				identityId = matchingIdentity.id;
@@ -204,8 +207,8 @@ Sent from tajnsek.si contact form
 								mailboxIds: {
 									[sentMailboxId]: true,
 								},
-								from: [{ email: 'robert+website@tajnsek.si' }],
-								to: [{ email: 'robert@tajnsek.si' }],
+								from: [{ email: FROM_EMAIL }],
+								to: [{ email: TO_EMAIL }],
 								replyTo: [{ email: data.email }],
 								subject: `New contact form: ${data.name} - ${data.company || 'No company'}`,
 								textBody: [
@@ -233,8 +236,8 @@ Sent from tajnsek.si contact form
 								emailId: '#email1',
 								identityId: identityId,
 								envelope: {
-									mailFrom: { email: 'robert+website@tajnsek.si' },
-									rcptTo: [{ email: 'robert@tajnsek.si' }],
+									mailFrom: { email: FROM_EMAIL },
+									rcptTo: [{ email: TO_EMAIL }],
 								},
 							},
 						},

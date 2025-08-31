@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Alert, Box, Button, Card, CardContent, Grid, Stack, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Card, CardContent, Divider, Grid, Stack, TextField, Typography } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import BusinessIcon from '@mui/icons-material/Business';
+import ReceiptIcon from '@mui/icons-material/Receipt';
 
 interface FormData {
 	name: string;
@@ -92,31 +92,43 @@ export const ContactPage: React.FC = () => {
 						Get in touch
 					</Typography>
 
-					<Stack spacing={2}>
+					<Stack spacing={3}>
 						<Stack direction="row" spacing={2} alignItems="center">
 							<EmailIcon color="primary" />
 							<Box>
 								<Typography fontWeight={600}>Email</Typography>
-								<Typography color="text.secondary">robi.tajnsek@gmail.com</Typography>
-							</Box>
-						</Stack>
-
-						<Stack direction="row" spacing={2} alignItems="center">
-							<PhoneIcon color="primary" />
-							<Box>
-								<Typography fontWeight={600}>Phone</Typography>
-								<Typography color="text.secondary">+386 40 597 224</Typography>
-							</Box>
-						</Stack>
-
-						<Stack direction="row" spacing={2} alignItems="center">
-							<LocationOnIcon color="primary" />
-							<Box>
-								<Typography fontWeight={600}>Location</Typography>
-								<Typography color="text.secondary">Mozirje, Slovenia</Typography>
+								<Typography color="text.secondary">hello@robert.tajnsek.si</Typography>
 							</Box>
 						</Stack>
 					</Stack>
+
+					<Divider />
+
+					<Box>
+						<Typography variant="h6" fontWeight={700} gutterBottom>
+							Company Information
+						</Typography>
+						<Stack spacing={2}>
+							<Stack direction="row" spacing={2} alignItems="flex-start">
+								<BusinessIcon color="primary" />
+								<Box>
+									<Typography fontWeight={600}>Business Name</Typography>
+									<Typography color="text.secondary">ARTERA, Robert Tajnšek s.p.</Typography>
+								</Box>
+							</Stack>
+
+							<Stack direction="row" spacing={2} alignItems="flex-start">
+								<ReceiptIcon color="primary" />
+								<Box>
+									<Typography fontWeight={600}>VAT Number</Typography>
+									<Typography color="text.secondary">SI47057980</Typography>
+									<Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+										Registration: 6788599000 • Est. 2015
+									</Typography>
+								</Box>
+							</Stack>
+						</Stack>
+					</Box>
 
 					<Box>
 						<Typography variant="h6" fontWeight={700} gutterBottom>
