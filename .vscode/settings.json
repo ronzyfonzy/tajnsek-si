@@ -1,5 +1,7 @@
 {
 	"files.associations": {
 		"wrangler.json": "jsonc"
-	}
+	},
+	"editor.insertSpaces": true,
+	"editor.tabSize": 2
 }
