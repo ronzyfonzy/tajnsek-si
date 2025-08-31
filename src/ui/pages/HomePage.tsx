@@ -9,6 +9,8 @@ import WebAssetIcon from '@mui/icons-material/WebAsset';
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
 import DnsIcon from '@mui/icons-material/Dns';
 import TerminalIcon from '@mui/icons-material/Terminal';
+import CheckIcon from '@mui/icons-material/Check';
+import ClearIcon from '@mui/icons-material/Clear';
 import { Link as RouterLink } from 'react-router-dom';
 
 const float = keyframes`
@@ -21,7 +23,7 @@ export const HomePage: React.FC = () => {
 	const theme = useTheme();
 	const isDark = theme.palette.mode === 'dark';
 	return (
-		<Stack spacing={10}>
+		<Stack spacing={6}>
 			<Box
 				textAlign="center"
 				sx={{
@@ -184,6 +186,95 @@ export const HomePage: React.FC = () => {
 							</Card>
 						</Grid>
 					))}
+				</Grid>
+			</Box>
+
+			<Divider sx={{ my: 6 }} />
+
+			<Box>
+				<Typography variant="h4" fontWeight={800} gutterBottom textAlign="center">
+					Off-the-Shelf vs. Custom-Built
+				</Typography>
+				<Typography variant="h6" color="text.secondary" maxWidth={800} mx="auto" textAlign="center" sx={{ mb: 6 }}>
+					Large, one-size-fits-all systems can seem like a safe bet, but they often force you to change how you work. A custom solution is built around your existing processes.
+				</Typography>
+				<Grid container spacing={4}>
+					<Grid size={{ xs: 12, md: 6 }}>
+						<Card
+							variant="outlined"
+							sx={{
+								borderRadius: 3,
+								height: '100%',
+								borderColor: 'error.light',
+								backgroundColor: isDark ? 'rgba(229, 57, 53, 0.05)' : 'rgba(229, 57, 53, 0.03)',
+							}}
+						>
+							<CardContent>
+								<Typography variant="h5" fontWeight={700} gutterBottom>
+									The "Big System" Way
+								</Typography>
+								<Typography color="text.secondary" sx={{ mb: 3 }}>
+									(e.g., SAP, Salesforce, NetSuite)
+								</Typography>
+								<Stack spacing={2}>
+									<Stack direction="row" spacing={1.5} alignItems="center">
+										<ClearIcon color="error" />
+										<Typography>Forces you to adapt your process to the software.</Typography>
+									</Stack>
+									<Stack direction="row" spacing={1.5} alignItems="center">
+										<ClearIcon color="error" />
+										<Typography>High complexity and a steep learning curve for your team.</Typography>
+									</Stack>
+									<Stack direction="row" spacing={1.5} alignItems="center">
+										<ClearIcon color="error" />
+										<Typography>Expensive licensing, hidden fees, and costly customizations.</Typography>
+									</Stack>
+									<Stack direction="row" spacing={1.5} alignItems="center">
+										<ClearIcon color="error" />
+										<Typography>Bloated with unused features that create clutter.</Typography>
+									</Stack>
+								</Stack>
+							</CardContent>
+						</Card>
+					</Grid>
+					<Grid size={{ xs: 12, md: 6 }}>
+						<Card
+							variant="outlined"
+							sx={{
+								borderRadius: 3,
+								height: '100%',
+								borderColor: 'success.light',
+								backgroundColor: isDark ? 'rgba(102, 187, 106, 0.05)' : 'rgba(102, 187, 106, 0.03)',
+							}}
+						>
+							<CardContent>
+								<Typography variant="h5" fontWeight={700} gutterBottom>
+									The Custom Approach
+								</Typography>
+								<Typography color="text.secondary" sx={{ mb: 3 }}>
+									(Built for you)
+								</Typography>
+								<Stack spacing={2}>
+									<Stack direction="row" spacing={1.5} alignItems="center">
+										<CheckIcon color="success" />
+										<Typography>Designed for your exact workflow and business logic.</Typography>
+									</Stack>
+									<Stack direction="row" spacing={1.5} alignItems="center">
+										<CheckIcon color="success" />
+										<Typography>Intuitive and simple, because it only does what you need.</Typography>
+									</Stack>
+									<Stack direction="row" spacing={1.5} alignItems="center">
+										<CheckIcon color="success" />
+										<Typography>No per-user fees. You own the code and the infrastructure.</Typography>
+									</Stack>
+									<Stack direction="row" spacing={1.5} alignItems="center">
+										<CheckIcon color="success" />
+										<Typography>Lean and focused. Evolves with your business needs.</Typography>
+									</Stack>
+								</Stack>
+							</CardContent>
+						</Card>
+					</Grid>
 				</Grid>
 			</Box>
 

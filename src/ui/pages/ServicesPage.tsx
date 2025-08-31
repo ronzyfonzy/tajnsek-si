@@ -7,6 +7,11 @@ import TerminalIcon from '@mui/icons-material/Terminal';
 import SecurityIcon from '@mui/icons-material/Security';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import TimelineIcon from '@mui/icons-material/Timeline';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import SchoolIcon from '@mui/icons-material/School';
 import { Link as RouterLink } from 'react-router-dom';
 
 export const ServicesPage: React.FC = () => {
@@ -71,7 +76,7 @@ export const ServicesPage: React.FC = () => {
 				</Grid>
 			</Box>
 
-			<Divider />
+			<Divider sx={{ my: 6 }} />
 
 			<Box>
 				<Typography variant="h5" fontWeight={800} gutterBottom>
@@ -83,6 +88,13 @@ export const ServicesPage: React.FC = () => {
 					<Chip icon={<HandshakeIcon />} label="Friendly UX" variant="outlined" />
 					<Chip icon={<DnsIcon />} label="Dockerized deployments" variant="outlined" />
 					<Chip icon={<IntegrationInstructionsIcon />} label="Internal tools" variant="outlined" />
+					<Chip icon={<DnsIcon />} label="Scalable deployments" variant="outlined" />
+					<Chip icon={<AutorenewIcon />} label="Automation" variant="outlined" />
+					<Chip icon={<TimelineIcon />} label="Data pipelines" variant="outlined" />
+					<Chip icon={<VisibilityIcon />} label="Monitoring" variant="outlined" />
+					<Chip icon={<AccountTreeIcon />} label="CI/CD" variant="outlined" />
+					<Chip icon={<AccountTreeIcon />} label="Release discipline" variant="outlined" />
+					<Chip icon={<SchoolIcon />} label="Project delivery coaching" variant="outlined" />
 				</Stack>
 			</Box>
 
@@ -91,13 +103,30 @@ export const ServicesPage: React.FC = () => {
 					Tech stack
 				</Typography>
 				<Stack direction="row" flexWrap="wrap" gap={1}>
-					{['React', '.NET', 'C#', 'Blazor', 'PHP', 'Docker', 'Cloudflare Workers', 'PostgreSQL', 'MySQL', 'CI/CD'].map((t) => (
+					{[
+						'React',
+						'.NET',
+						'C#',
+						'Blazor',
+						'PHP',
+						'Docker',
+						'Cloudflare Workers',
+						'PostgreSQL',
+						'MySQL',
+						'SQLite',
+						'CI/CD',
+						'Tailwind CSS',
+						'AWS',
+						'DigitalOcean',
+						'Linux',
+						'Ansible',
+					].map((t) => (
 						<Chip key={t} label={t} />
 					))}
 				</Stack>
 			</Box>
 
-			<Divider />
+			<Divider sx={{ my: 6 }} />
 
 			<Box>
 				<Typography variant="h5" fontWeight={800} gutterBottom>

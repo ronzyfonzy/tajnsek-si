@@ -27,21 +27,6 @@ export const AboutPage: React.FC = () => {
 
 			<Box>
 				<Typography variant="h5" fontWeight={800} gutterBottom>
-					Highlights
-				</Typography>
-				<Stack direction="row" flexWrap="wrap" gap={1}>
-					<Chip label="CTO & Lead Engineer @ Creatriks (2013–present)" />
-					<Chip label="Integrations: internal tools, webhooks, proxies" />
-					<Chip label="Dockerized deployments (cloud & on‑prem NAS)" />
-					<Chip label="CI/CD pipelines" />
-					<Chip label="Mentoring & project management" />
-				</Stack>
-			</Box>
-
-			<Divider sx={{ my: 6 }} />
-
-			<Box>
-				<Typography variant="h5" fontWeight={800} gutterBottom>
 					Links
 				</Typography>
 				<Stack direction="row" spacing={2}>

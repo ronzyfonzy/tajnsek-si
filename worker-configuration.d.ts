@@ -4,6 +4,8 @@
 declare namespace Cloudflare {
 	interface Env {
 		ASSETS: Fetcher;
+		FASTMAIL_API_TOKEN?: string;
+		FASTMAIL_ACCOUNT_ID?: string;
 	}
 }
 interface Env extends Cloudflare.Env {}

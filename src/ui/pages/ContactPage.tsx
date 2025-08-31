@@ -1,20 +1,133 @@
-import React from 'react';
-import { Button, Stack, TextField, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Alert, Box, Button, Card, CardContent, Grid, Stack, TextField, Typography } from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+
+interface FormData {
+	name: string;
+	email: string;
+	company: string;
+	message: string;
+}
 
 export const ContactPage: React.FC = () => {
+	const [formData, setFormData] = useState<FormData>({ name: '', email: '', company: '', message: '' });
+	const [loading, setLoading] = useState(false);
+	const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		setLoading(true);
+		setStatus('idle');
+
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(formData),
+			});
+
+			if (response.ok) {
+				setStatus('success');
+				setFormData({ name: '', email: '', company: '', message: '' });
+			} else {
+				setStatus('error');
+			}
+		} catch (error) {
+			setStatus('error');
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	const handleChange = (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
+		setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+	};
+
 	return (
-		<Stack spacing={3} maxWidth={560}>
-			<Typography variant="h3" fontWeight={700}>
-				Contact
-			</Typography>
-			<Typography color="text.secondary">Tell me about your project. I’ll reply within 1–2 business days.</Typography>
-			<TextField label="Name" fullWidth />
-			<TextField label="Email" type="email" fullWidth />
-			<TextField label="Company" fullWidth />
-			<TextField label="What problem are we solving?" fullWidth multiline minRows={4} />
-			<Button variant="contained" size="large">
-				Send
-			</Button>
-		</Stack>
+		<Grid container spacing={6} maxWidth={1200} mx="auto">
+			<Grid size={{ xs: 12, md: 7 }}>
+				<Stack spacing={4}>
+					<Box>
+						<Typography variant="h3" fontWeight={800} gutterBottom>
+							Let's discuss your project
+						</Typography>
+						<Typography color="text.secondary">
+							Tell me about what you're building. I'll reply within 1–2 business days with thoughts on approach, timeline, and next steps.
+						</Typography>
+					</Box>
+
+					{status === 'success' && <Alert severity="success">Message sent successfully! I'll be in touch within 1–2 business days.</Alert>}
+					{status === 'error' && <Alert severity="error">Failed to send message. Please try again or email me directly.</Alert>}
+
+					<Card variant="outlined" sx={{ borderRadius: 3 }}>
+						<CardContent>
+							<Stack component="form" onSubmit={handleSubmit} spacing={3}>
+								<TextField label="Name" value={formData.name} onChange={handleChange('name')} required fullWidth />
+								<TextField label="Email" type="email" value={formData.email} onChange={handleChange('email')} required fullWidth />
+								<TextField label="Company (optional)" value={formData.company} onChange={handleChange('company')} fullWidth />
+								<TextField
+									label="What problem are we solving?"
+									value={formData.message}
+									onChange={handleChange('message')}
+									multiline
+									minRows={4}
+									required
+									fullWidth
+									placeholder="Describe your current process, what's not working, and what success looks like..."
+								/>
+								<Button type="submit" variant="contained" size="large" disabled={loading} sx={{ mt: 2 }}>
+									{loading ? 'Sending...' : 'Send Message'}
+								</Button>
+							</Stack>
+						</CardContent>
+					</Card>
+				</Stack>
+			</Grid>
+
+			<Grid size={{ xs: 12, md: 5 }}>
+				<Stack spacing={3}>
+					<Typography variant="h5" fontWeight={800}>
+						Get in touch
+					</Typography>
+
+					<Stack spacing={2}>
+						<Stack direction="row" spacing={2} alignItems="center">
+							<EmailIcon color="primary" />
+							<Box>
+								<Typography fontWeight={600}>Email</Typography>
+								<Typography color="text.secondary">robi.tajnsek@gmail.com</Typography>
+							</Box>
+						</Stack>
+
+						<Stack direction="row" spacing={2} alignItems="center">
+							<PhoneIcon color="primary" />
+							<Box>
+								<Typography fontWeight={600}>Phone</Typography>
+								<Typography color="text.secondary">+386 40 597 224</Typography>
+							</Box>
+						</Stack>
+
+						<Stack direction="row" spacing={2} alignItems="center">
+							<LocationOnIcon color="primary" />
+							<Box>
+								<Typography fontWeight={600}>Location</Typography>
+								<Typography color="text.secondary">Mozirje, Slovenia</Typography>
+							</Box>
+						</Stack>
+					</Stack>
+
+					<Box>
+						<Typography variant="h6" fontWeight={700} gutterBottom>
+							Response time
+						</Typography>
+						<Typography color="text.secondary">
+							I typically respond within 1–2 business days. For urgent matters, feel free to call directly.
+						</Typography>
+					</Box>
+				</Stack>
+			</Grid>
+		</Grid>
 	);
 };
