@@ -14,26 +14,26 @@ import { ContactPage } from './ui/pages/ContactPage';
 import { NotFoundPage } from './ui/pages/NotFoundPage';
 
 const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <AppLayout />,
-		children: [
-			{ index: true, element: <HomePage /> },
-			{ path: 'services', element: <ServicesPage /> },
-			{ path: 'about', element: <AboutPage /> },
-			{ path: 'contact', element: <ContactPage /> },
-			{ path: '*', element: <NotFoundPage /> },
-		],
-	},
+  {
+    path: '/',
+    element: <AppLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'services', element: <ServicesPage /> },
+      { path: 'about', element: <AboutPage /> },
+      { path: 'contact', element: <ContactPage /> },
+      { path: '*', element: <NotFoundPage /> },
+    ],
+  },
 ]);
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 root.render(
-	<React.StrictMode>
-		<AppThemeProvider>
-			<CssBaseline />
-			<RouterProvider router={router} />
-		</AppThemeProvider>
-	</React.StrictMode>
+  <React.StrictMode>
+    <AppThemeProvider>
+      <CssBaseline />
+      <RouterProvider router={router} />
+    </AppThemeProvider>
+  </React.StrictMode>
 );

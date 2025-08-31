@@ -20,8 +20,8 @@ The service requires a FastMail API token and optionally an account ID:
 
 ```typescript
 const fastMail = new FastMailService({
-	apiToken: env.FASTMAIL_API_TOKEN,
-	accountId: env.FASTMAIL_ACCOUNT_ID, // Optional - will be auto-detected if not provided
+  apiToken: env.FASTMAIL_API_TOKEN,
+  accountId: env.FASTMAIL_ACCOUNT_ID, // Optional - will be auto-detected if not provided
 });
 ```
 
@@ -34,10 +34,10 @@ const fastMail = new FastMailService({
 
 ```typescript
 await fastMail.sendContactEmail({
-	name: 'John Doe',
-	email: 'john@example.com',
-	company: 'Example Corp',
-	message: 'Hello, I need help with...',
+  name: 'John Doe',
+  email: 'john@example.com',
+  company: 'Example Corp',
+  message: 'Hello, I need help with...',
 });
 ```
 
