@@ -35,13 +35,6 @@ export const AppThemeProvider: React.FC<React.PropsWithChildren> = ({ children }
 						default: mode === 'light' ? '#f7f9fc' : '#0b0f14',
 						paper: mode === 'light' ? '#ffffff' : '#10151c',
 					},
-					// Red
-					// primary: { main: '#e53935' },
-					// secondary: { main: '#ff1744' },
-					// background: {
-					// 	default: mode === 'light' ? '#f6f6f7' : '#0a0a0a',
-					// 	paper: mode === 'light' ? '#ffffff' : '#111114',
-					// },
 				},
 				shape: { borderRadius: 4 },
 				typography: {

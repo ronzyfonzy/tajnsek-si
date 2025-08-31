@@ -14,10 +14,29 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { Link as RouterLink } from 'react-router-dom';
 
 const float = keyframes`
-  0% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(10px, -12px, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  33% { transform: translate3d(15px, -20px, 0) rotate(2deg); }
+  66% { transform: translate3d(-10px, -10px, 0) rotate(-1deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
 `;
+
+const pulse = keyframes`
+  0% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+  100% { opacity: 0.3; transform: scale(1); }
+`;
+
+const boxHover = {
+	height: '100%',
+	borderRadius: 3,
+	transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1.01)',
+	transform: 'translateZ(0)',
+	'&:hover': {
+		transform: 'translateY(-6px) scale(1.02)',
+		boxShadow: '0 16px 32px rgba(0,0,0,0.1)',
+		borderColor: 'primary.main',
+	},
+};
 
 export const HomePage: React.FC = () => {
 	const theme = useTheme();
@@ -35,36 +54,31 @@ export const HomePage: React.FC = () => {
 					background: isDark
 						? 'linear-gradient(135deg, rgba(11,95,255,0.12) 0%, rgba(0,199,183,0.10) 100%)'
 						: 'linear-gradient(135deg, rgba(11,95,255,0.08) 0%, rgba(0,199,183,0.08) 100%)',
-					// red
-					// ? 'linear-gradient(135deg, rgba(229,57,53,0.12) 0%, rgba(255,23,68,0.10) 100%)'
-					// : 'linear-gradient(135deg, rgba(229,57,53,0.08) 0%, rgba(255,23,68,0.08) 100%)'
 					'&::before': {
 						content: '""',
 						position: 'absolute',
-						width: 520,
-						height: 520,
+						width: 400,
+						height: 400,
 						borderRadius: '50%',
-						background: 'radial-gradient(circle at 30% 30%, #0b5fff, transparent 60%)',
-						// background: 'radial-gradient(circle at 30% 30%, #e53935, transparent 60%)',
-						filter: 'blur(80px)',
-						opacity: isDark ? 0.18 : 0.28,
-						top: -120,
-						left: -120,
-						animation: `${float} 14s ease-in-out infinite`,
+						background: 'radial-gradient(circle at 30% 30%, #0b5fff, transparent 70%)',
+						filter: 'blur(60px)',
+						opacity: isDark ? 0.4 : 0.5,
+						top: -100,
+						left: -100,
+						animation: `${float} 8s ease-in-out infinite`,
 					},
 					'&::after': {
 						content: '""',
 						position: 'absolute',
-						width: 520,
-						height: 520,
+						width: 300,
+						height: 300,
 						borderRadius: '50%',
-						background: 'radial-gradient(circle at 70% 70%, #00c7b7, transparent 60%)',
-						// background: 'radial-gradient(circle at 70% 70%, #ff1744, transparent 60%)',
-						filter: 'blur(90px)',
-						opacity: isDark ? 0.16 : 0.24,
-						bottom: -140,
-						right: -140,
-						animation: `${float} 18s ease-in-out -4s infinite`,
+						background: 'radial-gradient(circle at 70% 70%, #00c7b7, transparent 70%)',
+						filter: 'blur(50px)',
+						opacity: isDark ? 0.3 : 0.4,
+						bottom: -80,
+						right: -80,
+						animation: `${pulse} 6s ease-in-out infinite`,
 					},
 				}}
 			>
@@ -109,18 +123,7 @@ export const HomePage: React.FC = () => {
 					},
 				].map((item) => (
 					<Grid key={item.title} size={{ xs: 12, md: 6, lg: 3 }}>
-						<Card
-							variant="outlined"
-							sx={{
-								height: '100%',
-								borderRadius: 3,
-								transition: 'transform .2s ease, box-shadow .2s ease',
-								'&:hover': {
-									transform: 'translateY(-2px)',
-									boxShadow: 4,
-								},
-							}}
-						>
+						<Card variant="outlined" sx={{ ...boxHover }}>
 							<CardContent>
 								<Stack spacing={1.5}>
 									<Box>{item.icon}</Box>
@@ -165,15 +168,7 @@ export const HomePage: React.FC = () => {
 						},
 					].map((s) => (
 						<Grid key={s.title} size={{ xs: 12, md: 6 }}>
-							<Card
-								variant="outlined"
-								sx={{
-									borderRadius: 3,
-									height: '100%',
-									transition: 'transform .2s ease, box-shadow .2s ease',
-									'&:hover': { transform: 'translateY(-2px)', boxShadow: 4 },
-								}}
-							>
+							<Card variant="outlined" sx={{ ...boxHover }}>
 								<CardContent>
 									<Stack spacing={1.5}>
 										<Box>{s.icon}</Box>
@@ -294,18 +289,7 @@ export const HomePage: React.FC = () => {
 						{ step: '6', title: 'Continuous delivery', desc: 'Ongoing improvements, monitoring, and support.' },
 					].map((p) => (
 						<Grid key={p.step} size={{ xs: 12, md: 6, lg: 4 }}>
-							<Card
-								variant="outlined"
-								sx={{
-									borderRadius: 3,
-									height: '100%',
-									transition: 'transform .2s ease, box-shadow .2s ease',
-									'&:hover': {
-										transform: 'translateY(-2px)',
-										boxShadow: 4,
-									},
-								}}
-							>
+							<Card variant="outlined" sx={{ ...boxHover }}>
 								<CardContent>
 									<Stack direction="row" spacing={2} alignItems="flex-start">
 										<Box

@@ -14,6 +14,18 @@ import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import SchoolIcon from '@mui/icons-material/School';
 import { Link as RouterLink } from 'react-router-dom';
 
+const boxHover = {
+	height: '100%',
+	borderRadius: 3,
+	transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1.01)',
+	transform: 'translateZ(0)',
+	'&:hover': {
+		transform: 'translateY(-6px) scale(1.02)',
+		boxShadow: '0 16px 32px rgba(0,0,0,0.1)',
+		borderColor: 'primary.main',
+	},
+};
+
 export const ServicesPage: React.FC = () => {
 	return (
 		<Stack spacing={6}>
@@ -52,15 +64,7 @@ export const ServicesPage: React.FC = () => {
 						},
 					].map((item) => (
 						<Grid key={item.title} size={{ xs: 12, md: 6 }}>
-							<Card
-								variant="outlined"
-								sx={{
-									borderRadius: 3,
-									height: '100%',
-									transition: 'transform .2s ease, box-shadow .2s ease',
-									'&:hover': { transform: 'translateY(-2px)', boxShadow: 4 },
-								}}
-							>
+							<Card variant="outlined" sx={{ ...boxHover }}>
 								<CardContent>
 									<Stack spacing={1.5}>
 										<Box>{item.icon}</Box>
@@ -140,7 +144,7 @@ export const ServicesPage: React.FC = () => {
 						{ title: 'Ongoing support', desc: 'Continuous improvements, monitoring, and a predictable change cadence.' },
 					].map((p) => (
 						<Grid key={p.title} size={{ xs: 12, md: 6 }}>
-							<Card variant="outlined" sx={{ borderRadius: 3, height: '100%' }}>
+							<Card variant="outlined" sx={{ ...boxHover }}>
 								<CardContent>
 									<Typography variant="h6" fontWeight={700}>
 										{p.title}

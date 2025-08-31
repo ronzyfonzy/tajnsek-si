@@ -12,9 +12,6 @@ export default defineConfig({
 
 					// Material UI chunk (largest dependency)
 					'vendor-mui': ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled'],
-
-					// Fonts chunk
-					'vendor-fonts': ['@fontsource/instrument-sans'],
 				},
 			},
 		},
