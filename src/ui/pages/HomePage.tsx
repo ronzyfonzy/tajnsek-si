@@ -46,8 +46,8 @@ export const HomePage: React.FC = () => {
       <Box
         textAlign="center"
         sx={{
-          py: { xs: 8, md: 12 },
-          px: 2,
+          py: { xs: 6, sm: 8, md: 10, lg: 12 },
+          px: { xs: 1, sm: 2, md: 3 },
           borderRadius: 3,
           position: 'relative',
           overflow: 'hidden',
@@ -82,18 +82,63 @@ export const HomePage: React.FC = () => {
           },
         }}
       >
-        <Typography variant="overline" color="primary" sx={{ letterSpacing: 1, fontWeight: 700 }}>
+        <Typography
+          variant="overline"
+          color="primary"
+          sx={{
+            letterSpacing: 1,
+            fontWeight: 700,
+            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+          }}
+        >
           CUSTOM SOFTWARE, ZERO BLOAT
         </Typography>
-        <Typography variant="h2" fontWeight={800} gutterBottom>
+        <Typography
+          variant="h2"
+          fontWeight={800}
+          gutterBottom
+          sx={{
+            fontSize: {
+              xs: '2rem', // 28px on mobile
+              sm: '2.5rem', // 40px on small tablets
+              md: '3rem', // 48px on medium screens
+              lg: '3.5rem', // 56px on large screens
+            },
+            lineHeight: { xs: 1.2, sm: 1.3, md: 1.2 },
+          }}
+        >
           Software that adapts to your business — not the other way around
         </Typography>
-        <Typography variant="h6" color="text.secondary" maxWidth={900} mx="auto">
+        <Typography
+          variant="h6"
+          color="text.secondary"
+          maxWidth={900}
+          mx="auto"
+          sx={{
+            fontSize: {
+              xs: '1rem', // 16px on mobile
+              sm: '1.125rem', // 18px on small tablets
+              md: '1.25rem', // 20px on medium+ screens
+            },
+            lineHeight: { xs: 1.4, md: 1.5 },
+            px: { xs: 1, sm: 2 }, // Extra padding on mobile
+          }}
+        >
           I design and ship focused applications that match your exact workflows. Faster onboarding, clean integrations, and deployments you
           can own — cloud or on‑prem.
         </Typography>
-        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" sx={{ mt: 4 }}>
-          <Button component={RouterLink} to="/services" variant="contained" size="large">
+        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" sx={{ mt: { xs: 3, md: 4 } }}>
+          <Button
+            component={RouterLink}
+            to="/services"
+            variant="contained"
+            size="large"
+            sx={{
+              fontSize: { xs: '1rem', sm: '1.125rem' },
+              px: { xs: 3, sm: 4 },
+              py: { xs: 1.5, sm: 2 },
+            }}
+          >
             See what I build
           </Button>
         </Stack>

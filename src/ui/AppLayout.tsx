@@ -1,14 +1,26 @@
-import React from 'react';
-import { AppBar, Box, Container, IconButton, Toolbar, Typography, Button, useTheme } from '@mui/material';
+import React, { useState } from 'react';
+import { AppBar, Box, Container, IconButton, Toolbar, Typography, Button, useTheme, Menu, MenuItem, useMediaQuery } from '@mui/material';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import MenuIcon from '@mui/icons-material/Menu';
 import { Outlet, Link as RouterLink } from 'react-router-dom';
 import { useColorMode } from './AppThemeProvider';
 import { ScrollToTop } from './ScrollToTop';
 
 export const AppLayout: React.FC = () => {
   const theme = useTheme();
-  const { mode, toggle } = useColorMode();
+  const { toggle } = useColorMode();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh">
       <ScrollToTop />
@@ -24,41 +36,83 @@ export const AppLayout: React.FC = () => {
         }}
       >
         <Toolbar sx={{ position: 'relative' }}>
-          {/* Left navigation */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Button component={RouterLink} to="/services" color="inherit">
-              Services
-            </Button>
-            <Button component={RouterLink} to="/about" color="inherit">
-              About
-            </Button>
-          </Box>
+          {isMobile ? (
+            // Mobile layout
+            <>
+              <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen} sx={{ mr: 2 }}>
+                <MenuIcon />
+              </IconButton>
 
-          {/* Center brand */}
-          <Typography
-            variant="h6"
-            component={RouterLink}
-            to="/"
-            sx={{
-              position: 'absolute',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-          >
-            Robert Tajnšek / Artera s.p.
-          </Typography>
+              <Typography
+                variant="h6"
+                component={RouterLink}
+                to="/"
+                sx={{
+                  flexGrow: 1,
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  fontSize: { xs: '1rem', sm: '1.25rem' },
+                }}
+              >
+                Robert Tajnšek / Artera s.p.
+              </Typography>
 
-          {/* Right actions */}
-          <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center' }}>
-            <Button component={RouterLink} to="/contact" variant="contained" sx={{ mx: 1 }}>
-              Contact
-            </Button>
-            <IconButton aria-label="toggle color mode" onClick={toggle} color="inherit">
-              {theme.palette.mode === 'light' ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
-            </IconButton>
-          </Box>
+              <IconButton aria-label="toggle color mode" onClick={toggle} color="inherit">
+                {theme.palette.mode === 'light' ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
+              </IconButton>
+
+              <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose} sx={{ mt: 1 }}>
+                <MenuItem component={RouterLink} to="/services" onClick={handleMenuClose}>
+                  Services
+                </MenuItem>
+                <MenuItem component={RouterLink} to="/about" onClick={handleMenuClose}>
+                  About
+                </MenuItem>
+                <MenuItem component={RouterLink} to="/contact" onClick={handleMenuClose}>
+                  Contact
+                </MenuItem>
+              </Menu>
+            </>
+          ) : (
+            // Desktop layout
+            <>
+              {/* Left navigation */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Button component={RouterLink} to="/services" color="inherit">
+                  Services
+                </Button>
+                <Button component={RouterLink} to="/about" color="inherit">
+                  About
+                </Button>
+              </Box>
+
+              {/* Center brand */}
+              <Typography
+                variant="h6"
+                component={RouterLink}
+                to="/"
+                sx={{
+                  position: 'absolute',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                }}
+              >
+                Robert Tajnšek / Artera s.p.
+              </Typography>
+
+              {/* Right actions */}
+              <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center' }}>
+                <Button component={RouterLink} to="/contact" variant="contained" sx={{ mx: 1 }}>
+                  Contact
+                </Button>
+                <IconButton aria-label="toggle color mode" onClick={toggle} color="inherit">
+                  {theme.palette.mode === 'light' ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
+                </IconButton>
+              </Box>
+            </>
+          )}
         </Toolbar>
       </AppBar>
       <Container sx={{ flex: 1, py: 6 }}>
