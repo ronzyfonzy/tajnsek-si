@@ -8,7 +8,7 @@ export const NotFoundPage: React.FC = () => {
     <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" minHeight="60vh" textAlign="center">
       <Stack spacing={3} alignItems="center">
         <ErrorOutlineIcon color="primary" sx={{ fontSize: 80 }} />
-        <Typography variant="h2" fontWeight={800}>
+        <Typography variant="h2" fontWeight={700}>
           404
         </Typography>
         <Typography variant="h5" color="text.secondary">

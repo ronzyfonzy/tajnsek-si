@@ -8,7 +8,7 @@ export const AboutPage: React.FC = () => {
   return (
     <Stack spacing={6}>
       <Box>
-        <Typography variant="h3" fontWeight={800} gutterBottom>
+        <Typography variant="h3" fontWeight={700} gutterBottom>
           About
         </Typography>
         <Typography gutterBottom>
@@ -26,7 +26,7 @@ export const AboutPage: React.FC = () => {
       <Divider sx={{ my: 6 }} />
 
       <Box>
-        <Typography variant="h5" fontWeight={800} gutterBottom>
+        <Typography variant="h5" fontWeight={700} gutterBottom>
           Links
         </Typography>
         <Stack direction="row" spacing={2}>
