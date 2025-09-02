@@ -50,7 +50,7 @@ export const ContactPage: React.FC = () => {
       <Grid size={{ xs: 12, md: 7 }}>
         <Stack spacing={4}>
           <Box>
-            <Typography variant="h3" fontWeight={800} gutterBottom>
+            <Typography variant="h3" fontWeight={700} gutterBottom>
               Let's discuss your project
             </Typography>
             <Typography color="text.secondary">
@@ -88,7 +88,7 @@ export const ContactPage: React.FC = () => {
 
       <Grid size={{ xs: 12, md: 5 }}>
         <Stack spacing={3}>
-          <Typography variant="h5" fontWeight={800}>
+          <Typography variant="h5" fontWeight={700}>
             Get in touch
           </Typography>
 

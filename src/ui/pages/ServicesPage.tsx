@@ -30,7 +30,7 @@ export const ServicesPage: React.FC = () => {
   return (
     <Stack spacing={6}>
       <Box>
-        <Typography variant="h3" fontWeight={800} gutterBottom>
+        <Typography variant="h3" fontWeight={700} gutterBottom>
           Services
         </Typography>
         <Typography>
@@ -83,7 +83,7 @@ export const ServicesPage: React.FC = () => {
       <Divider sx={{ my: 6 }} />
 
       <Box>
-        <Typography variant="h5" fontWeight={800} gutterBottom>
+        <Typography variant="h5" fontWeight={700} gutterBottom>
           Capabilities
         </Typography>
         <Stack direction="row" flexWrap="wrap" gap={1}>
@@ -103,7 +103,7 @@ export const ServicesPage: React.FC = () => {
       </Box>
 
       <Box>
-        <Typography variant="h5" fontWeight={800} gutterBottom>
+        <Typography variant="h5" fontWeight={700} gutterBottom>
           Tech stack
         </Typography>
         <Stack direction="row" flexWrap="wrap" gap={1}>
@@ -133,7 +133,7 @@ export const ServicesPage: React.FC = () => {
       <Divider sx={{ my: 6 }} />
 
       <Box>
-        <Typography variant="h5" fontWeight={800} gutterBottom>
+        <Typography variant="h5" fontWeight={700} gutterBottom>
           How we work together
         </Typography>
         <Grid container spacing={3}>

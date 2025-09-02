@@ -95,7 +95,7 @@ export const HomePage: React.FC = () => {
         </Typography>
         <Typography
           variant="h2"
-          fontWeight={800}
+          fontWeight={700}
           gutterBottom
           sx={{
             fontSize: {
@@ -186,7 +186,7 @@ export const HomePage: React.FC = () => {
       <Divider sx={{ my: 6 }} />
 
       <Box>
-        <Typography variant="h4" fontWeight={800} gutterBottom>
+        <Typography variant="h4" fontWeight={700} gutterBottom>
           Services
         </Typography>
         <Grid container spacing={3}>
@@ -232,7 +232,7 @@ export const HomePage: React.FC = () => {
       <Divider sx={{ my: 6 }} />
 
       <Box>
-        <Typography variant="h4" fontWeight={800} gutterBottom textAlign="center">
+        <Typography variant="h4" fontWeight={700} gutterBottom textAlign="center">
           Off-the-Shelf vs. Custom-Built
         </Typography>
         <Typography variant="h6" color="text.secondary" maxWidth={800} mx="auto" textAlign="center" sx={{ mb: 6 }}>
@@ -321,7 +321,7 @@ export const HomePage: React.FC = () => {
 
       <Divider sx={{ my: 6 }} />
       <Box>
-        <Typography variant="h4" fontWeight={800} gutterBottom>
+        <Typography variant="h4" fontWeight={700} gutterBottom>
           How I work
         </Typography>
         <Grid container spacing={3}>
