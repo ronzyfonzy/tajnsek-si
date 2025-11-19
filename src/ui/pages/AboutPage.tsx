@@ -27,6 +27,24 @@ export const AboutPage: React.FC = () => {
 
       <Box>
         <Typography variant="h5" fontWeight={700} gutterBottom>
+          Experience & Approach
+        </Typography>
+        <Typography gutterBottom>
+          With experience spanning full‑stack development, infrastructure automation, and DevOps practices, I bring a pragmatic approach to
+          software delivery. I've worked with businesses across various industries, helping them move from manual processes and spreadsheets
+          to purpose‑built applications that scale with their growth.
+        </Typography>
+        <Typography>
+          What sets my work apart is the focus on <strong>ownership</strong> — you own the code, the infrastructure, and the data. No vendor
+          lock‑in, no per‑user licensing fees, and no forced upgrades. The solutions I build are designed to evolve with your business, not
+          hold it back.
+        </Typography>
+      </Box>
+
+      <Divider sx={{ my: 6 }} />
+
+      <Box>
+        <Typography variant="h5" fontWeight={700} gutterBottom>
           Links
         </Typography>
         <Stack direction="row" spacing={2}>
