@@ -320,6 +320,43 @@ export const HomePage: React.FC = () => {
       </Box>
 
       <Divider sx={{ my: 6 }} />
+
+      <Box>
+        <Typography variant="h4" fontWeight={700} gutterBottom textAlign="center">
+          Industries I serve
+        </Typography>
+        <Grid container spacing={3} sx={{ mt: 2 }}>
+          {[
+            {
+              title: 'Manufacturing & Distribution',
+              desc: 'Track production, inventory, and logistics with systems that match your exact workflow.',
+            },
+            {
+              title: 'Professional Services',
+              desc: 'Manage projects, clients, and billing without the overhead of generic project management tools.',
+            },
+            {
+              title: 'Supply Chain & Logistics',
+              desc: 'Coordinate orders, fulfillment, and fleet ops with real-time visibility across your network.',
+            },
+          ].map((industry) => (
+            <Grid key={industry.title} size={{ xs: 12, sm: 12, md: 4 }}>
+              <Card variant="outlined" sx={{ ...boxHover, height: '100%' }}>
+                <CardContent>
+                  <Typography variant="h6" fontWeight={700} gutterBottom>
+                    {industry.title}
+                  </Typography>
+                  <Typography color="text.secondary" variant="body2">
+                    {industry.desc}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+
+      <Divider sx={{ my: 6 }} />
       <Box>
         <Typography variant="h4" fontWeight={700} gutterBottom>
           How I work

@@ -3,7 +3,7 @@ import { AppBar, Box, Container, IconButton, Toolbar, Typography, Button, useThe
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Outlet, Link as RouterLink } from 'react-router-dom';
+import { Outlet, Link as RouterLink, useLocation } from 'react-router-dom';
 import { useColorMode } from './AppThemeProvider';
 import { ScrollToTop } from './ScrollToTop';
 
@@ -12,6 +12,14 @@ export const AppLayout: React.FC = () => {
   const { toggle } = useColorMode();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -62,13 +70,16 @@ export const AppLayout: React.FC = () => {
               </IconButton>
 
               <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose} sx={{ mt: 1 }}>
-                <MenuItem component={RouterLink} to="/services" onClick={handleMenuClose}>
+                <MenuItem component={RouterLink} to="/" onClick={handleMenuClose} selected={isActive('/')}>
+                  Home
+                </MenuItem>
+                <MenuItem component={RouterLink} to="/services" onClick={handleMenuClose} selected={isActive('/services')}>
                   Services
                 </MenuItem>
-                <MenuItem component={RouterLink} to="/about" onClick={handleMenuClose}>
+                <MenuItem component={RouterLink} to="/about" onClick={handleMenuClose} selected={isActive('/about')}>
                   About
                 </MenuItem>
-                <MenuItem component={RouterLink} to="/contact" onClick={handleMenuClose}>
+                <MenuItem component={RouterLink} to="/contact" onClick={handleMenuClose} selected={true}>
                   Contact
                 </MenuItem>
               </Menu>
@@ -78,10 +89,13 @@ export const AppLayout: React.FC = () => {
             <>
               {/* Left navigation */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Button component={RouterLink} to="/services" color="inherit">
+                <Button component={RouterLink} to="/" color="inherit" variant={isActive('/') ? 'outlined' : 'text'}>
+                  Home
+                </Button>
+                <Button component={RouterLink} to="/services" color="inherit" variant={isActive('/services') ? 'outlined' : 'text'}>
                   Services
                 </Button>
-                <Button component={RouterLink} to="/about" color="inherit">
+                <Button component={RouterLink} to="/about" color="inherit" variant={isActive('/about') ? 'outlined' : 'text'}>
                   About
                 </Button>
               </Box>
